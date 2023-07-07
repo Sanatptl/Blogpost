@@ -30,13 +30,17 @@ const CreatePost = () => {
     setIsLoading(true);
     try {
       const doc = await axios.post(`${BASE_URL}/posts`, newPost);
+      setPostData((prev) => {
+        prev.unshift(doc.data.data);
+        return prev;
+      });
+      setNewPost({
+        name: "",
+        description: "",
+        content: "",
+      });
       setTimeout(() => {
-        setPostData((prev) => prev.unshift(doc.data.data));
-        setNewPost({
-          name: "",
-          description: "",
-          content: "",
-        });
+        setIsLoading(false);
         navigate("/");
       }, 1000);
     } catch (err) {
@@ -45,7 +49,6 @@ const CreatePost = () => {
       }
       console.log(err.message);
     } finally {
-      setIsLoading(false);
     }
   };
 

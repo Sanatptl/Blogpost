@@ -3,7 +3,8 @@ import AddBtn from "./AddBtn";
 import { usePost } from "../context/postContext";
 
 const Home = () => {
-  const { postData } = usePost();
+  const { postData = [] } = usePost();
+
   return (
     <div className="container min-h-[200vh] py-4 px-2">
       <h1 className="text-3xl text-[#6998AB] font-bold text-default text-center">
