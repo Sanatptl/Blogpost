@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
   cors({
-    origin: "https://blogmanagement-sanat.netlify.app/",
+    origin: "https://blogmanagement-sanat.netlify.app",
     credentials: true,
   })
 );

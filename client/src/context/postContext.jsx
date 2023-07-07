@@ -45,6 +45,7 @@ const PostProvider = ({ children }) => {
         setErrMsg(
           "The server is currently unavailable. Please try again later."
         );
+        setErrType("error");
         setShowAlert(true);
       }
     })();
