@@ -10,11 +10,11 @@ const Blog = () => {
   return (
     <main className="container py-4 px-2 relative">
       <Link to="/">
-        <div className="fixed z-10 top-6 left-8 border-2 border-[#6998AB] hover:scale-95 p-2 rounded-full">
+        <div className="absolute md:fixed z-10 top-6 left-8 border-2 border-[#6998AB] hover:scale-95 p-2 rounded-full">
           <img src="back-arrow.svg" className="w-6 h-6" alt="" />
         </div>
       </Link>
-      <div className="text-[#6998AB] pt-5 flex flex-col justify-around min-h-[40vh] mx-auto w-5/6">
+      <div className="text-[#6998AB]  pt-12 md:pt-5 flex flex-col justify-around min-h-[40vh] mx-auto w-5/6">
         <div className="">
           <h2 className="text-xl md:text-3xl font-semibold">{blogData.name}</h2>
         </div>

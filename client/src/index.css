@@ -10,6 +10,30 @@ body.ReactModal__Body--open {
   overflow: hidden;
 }
 
+.alert {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  z-index: 9999;
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 400;
+  text-align: center;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  padding: 1.6rem 8rem;
+  -webkit-box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.25);
+  box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.25);
+}
+.alert--success {
+  background-color: #20bf6b;
+}
+.alert--error {
+  background-color: #eb4d4b;
+}
+
 @layer utilities {
   .form_inputs {
     @apply shadow-lg appearance-none border-2 border-[#6998AB] text-white bg-transparent rounded w-full py-2 px-4 md:py-4 md:px-10 focus:outline-none focus:shadow-lg focus:shadow-[#6998AB] focus:border;

@@ -51,8 +51,10 @@ const PostCard = ({ post }) => {
           />
         </div>
       </div>
-      <p className="text-xl mb-2 font-semibold">{post.name}</p>
-      <p className="font-medium ">{post.description}</p>
+      <p className="text-lg md:text-xl mb-2 font-semibold truncate">
+        {post.name}
+      </p>
+      <p className="font-medium truncate">{post.description}</p>
       <div className="flex justify-between items-end">
         <p className="text-xs">{date}</p>
         <p className="hover:font-semibold hover:scale-95" onClick={goToBlog}>

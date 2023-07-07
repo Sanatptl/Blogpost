@@ -2,7 +2,8 @@ import axios from "axios";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { BASE_URL } from "../utils";
-import { usePost } from "../context/postContext";
+import { useError, usePost } from "../context/postContext";
+import AlertWindow from "../components/Alert/AlertWindow";
 
 const CreatePost = () => {
   const [newPost, setNewPost] = useState({
@@ -13,6 +14,8 @@ const CreatePost = () => {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const { setPostData } = usePost();
+  const { setErrMsg, errMsg, showAlert, setShowAlert, errType, setErrType } =
+    useError();
 
   //
 
@@ -34,6 +37,8 @@ const CreatePost = () => {
         prev.unshift(doc.data.data);
         return prev;
       });
+      setErrType("success");
+      setErrMsg("Blog created successfully!");
       setNewPost({
         name: "",
         description: "",
@@ -44,11 +49,15 @@ const CreatePost = () => {
         navigate("/");
       }, 1000);
     } catch (err) {
+      setErrType("error");
       if (err.name === "AxiosError") {
-        console.log(err.response.data.message);
+        setErrMsg(err.response.data.message);
+      } else {
+        setErrMsg(err.message);
       }
-      console.log(err.message);
+      setIsLoading(false);
     } finally {
+      setShowAlert(true);
     }
   };
 
@@ -58,6 +67,12 @@ const CreatePost = () => {
 
   return (
     <div className="min-h-screen">
+      <AlertWindow
+        show={showAlert}
+        setShow={setShowAlert}
+        msg={errMsg}
+        type={errType}
+      />
       <div className="container text-[#6998AB] mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
         <form onSubmit={handleSubmit} className="py-8">
           <div className="mb-4">
