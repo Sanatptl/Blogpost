@@ -1,0 +1,23 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #343a40;
+}
+body.ReactModal__Body--open {
+  overflow: hidden;
+}
+
+@layer utilities {
+  .form_inputs {
+    @apply shadow-lg appearance-none border-2 border-[#6998AB] text-white bg-transparent rounded w-full py-2 px-4 md:py-4 md:px-10 focus:outline-none focus:shadow-lg focus:shadow-[#6998AB] focus:border;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -16,7 +16,10 @@ export const getPosts = catchAsyncFn(async (req, res, next) => {
   const filterQuery = ["fields", "sort", "page", "limit"];
   filterQuery.forEach((el) => delete queryObj[el]);
 
-  const posts = await Post.find(queryObj);
+  const query = Post.find(queryObj);
+  query.sort("-createdAt");
+
+  const posts = await query;
 
   res.status(200).json({
     status: "success",
@@ -44,7 +47,6 @@ export const deletePost = catchAsyncFn(async (req, res, next) => {
 export const updatePost = catchAsyncFn(async (req, res, next) => {
   const updatedDoc = await Post.findByIdAndUpdate(req.params.postId, req.body, {
     new: true,
-    runValidators: true,
   });
 
   if (!updatedDoc) {
